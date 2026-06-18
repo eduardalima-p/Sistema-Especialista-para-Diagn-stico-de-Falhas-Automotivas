@@ -4,9 +4,8 @@
 ;;;; Equipe: Diele Ilana Coelho Cantanhede, Maria Eduarda Pereira Lima, Matheus Macário Sousa e Rian Emmanoel Santos Bastos
 ;;;; =====================================================================
 
-;; 1. BASE DE CONHECIMENTO (IMUTÁVEL)
-;; Representada como uma Association List (Alist). 
-;; Cada elemento tem o formato: ((sintomas...) diagnostico peca)
+;; CASOS POSSÍVEIS (BASE DE REGRA)
+
 (defparameter *base-regras*
   '(((motor_nao_liga luz_bateria_acesa) bateria_descarregada "Bateria")
     ((motor_nao_liga partida_fraca) motor_de_arranque_defeituoso "Motor de arranque")
@@ -20,36 +19,33 @@
     ((vibracao_excessiva perda_de_potencia) problema_na_transmissao "Transmissao")))
 
 
-;; 2. FUNÇÕES PURAS E RECURSIVAS
-
-;; Função auxiliar pura: verifica se todos os sintomas exigidos pela regra 
-;; estão presentes na lista de sintomas informados pelo mecânico.
 (defun subconjunto-p (requeridos informados)
+;; verifica se todos os sintomas exigidos pela regra estão presentes na lista de sintomas informados pelo mecânico.
   (cond
-    ;; Caso base 1: se não há mais requisitos a checar, é verdadeiro
     ((null requeridos) t) 
-    ;; Passo recursivo: se o 1º requisito está na lista informada, testa o resto
+    ;; condição de parada, se a base de regras estiver vazia, exibe a mensagem de erro.
     ((member (car requeridos) informados) 
      (subconjunto-p (cdr requeridos) informados)) 
-    ;; Caso base 2: se faltou algum sintoma, retorna falso
+    ;; Extrai o 1º requisito (car) e checa se foi informado (member). 
+    ;; Se sim, faz recursão com o resto da lista (cdr)
     (t nil))) 
+    ;; Se o cond chegar aqui o sintoma não estava na lista, ele entra na condição t e retorna nil (Falso).
 
 ;; Função principal de filtragem (Recursão Estrutural)
 ;; Percorre a base de regras eliminando hipóteses que não batem com os sintomas.
 (defun filtrar-diagnosticos (sintomas regras)
   (cond
-    ;; Caso base: fim da base de conhecimento (retorna lista vazia)
     ((null regras) nil) 
-    
-    ;; Se os sintomas desta regra forem um subconjunto dos sintomas informados...
+    ;; Cria a função. A condição de parada é: se a lista de regras acabar (null), retorna nil (uma lista vazia).
     ((subconjunto-p (caar regras) sintomas) 
-     ;; ...transforma o dado mantendo apenas o diagnóstico e a peça, e continua a busca
+    ;; caar: atalho para extrair o 1º elemento da 1ª regra (os sintomas). Verifica se os sintomas informados satisfazem a hipótese atual.
      (cons (cdar regras) 
+     ;; cdar extrai apenas o diagnóstico/peça da regra. O cons anexa esse dado à recursão do restante da lista, mantendo a imutabilidade (sem usar append). 
            (filtrar-diagnosticos sintomas (cdr regras)))) 
            
-    ;; Se não bater, apenas ignora a regra atual e continua filtrando o resto
     (t (filtrar-diagnosticos sintomas (cdr regras)))))
-
+    ;; Se a regra não for satisfeita, apenas ignora a atual e avança a 
+    ;; recursão para avaliar o resto das regras (cdr).
 
 ;; 3. FUNÇÃO DE INTERFACE
 ;; Função que o usuário (mecânico) chama para obter o diagnóstico final.
@@ -61,17 +57,17 @@
 
 
 ;; =====================================================================
-;; EXEMPLOS DE EXECUÇÃO (Para testar no terminal)
+;; ALGUNS EXEMPLOS DE EXECUÇÃO
 ;; =====================================================================
 
 ;; Teste 1: Falha na bateria
-;; (print (diagnosticar '(motor_nao_liga luz_bateria_acesa)))
+(print (diagnosticar '(motor_nao_liga luz_bateria_acesa)))
 ;; Saída esperada: ((BATERIA_DESCARREGADA "Bateria"))
 
 ;; Teste 2: Sintomas misturados (O sistema deve filtrar e achar as interseções)
-;; (print (diagnosticar '(consumo_alto luz_injecao_acesa winver ruido_metalico)))
+(print (diagnosticar '(consumo_alto luz_injecao_acesa winver ruido_metalico)))
 ;; Saída esperada: ((FALHA_NA_INJECAO "Sistema de injecao"))
 
 ;; Teste 3: Sintoma isolado que não aciona nenhuma regra completa
-;; (print (diagnosticar '(perda_de_potencia)))
+(print (diagnosticar '(perda_de_potencia)))
 ;; Saída esperada: (("Falha desconhecida ou sintomas insuficientes." "Nenhuma peca especifica"))
