@@ -1,6 +1,6 @@
 % =====================================================================
 % Sistema Especialista para Diagnóstico de Falhas Automotivas
-% Paradigma: Lógico (SWI-Prolog)
+% Paradigma: Lógico (SWI-Prolog).
 % Equipe: Diele Ilana Coelho Cantanhede, Maria Eduarda Pereira Lima, Matheus Macário Sousa e Rian Emmanoel Santos Bastos
 % =====================================================================
 
