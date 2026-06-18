@@ -37,20 +37,12 @@ O sistema foi modelado com base em 10 cenários reais de falhas mecânicas e ele
 
 
 ```text
-
 ├── python/
-
 │   └── main.py             # Implementação em Orientação a Objetos
-
 ├── prolog/
-
 │   └── diagnostico.pl      # Base de conhecimento e regras em Prolog
-
 ├── lisp/
-
 │   └── diagnostico.lisp    # Funções puras e processamento de listas em Lisp
-
 ├── relatorio\_tecnico.pdf   # Relatório detalhado comparando os paradigmas
-
 └── README.md               # Instruções e documentação do projeto
 
