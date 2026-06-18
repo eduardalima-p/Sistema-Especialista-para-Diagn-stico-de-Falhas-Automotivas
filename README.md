@@ -2,31 +2,10 @@
 
 
 
-Este repositório contém o projeto prático desenvolvido para a disciplina de \*\*Laboratório de Programação (Período 2026/1)\*\*. 
+Este repositório contém o projeto prático desenvolvido para a disciplina de Laboratório de Programação. O objetivo do trabalho é resolver o mesmo problema computacional — um sistema especialista de diagnóstico mecânico — utilizando três linguagens de programação sob três paradigmas distintos, analisando os pontos fortes, limitações e a elegância de cada abordagem.
 
 
-
-O objetivo do trabalho é resolver o mesmo problema computacional — um sistema especialista de diagnóstico mecânico — utilizando três linguagens de programação sob três paradigmas distintos, analisando os pontos fortes, limitações e a elegância de cada abordagem.
-
-
-
-\## Paradigmas Utilizados
-
-
-
-1\. \*\*Orientação a Objetos (OO):\*\* Implementado em \*\*Python\*\*, focando na modelagem estrutural de componentes, encapsulamento de estados e hierarquia de classes.
-
-2\. \*\*Programação Lógica:\*\* Implementado em \*\*Prolog (SWI-Prolog)\*\*, focando em uma base de conhecimento declarativa pura onde o motor de inferência resolve a busca por \*backtracking\*.
-
-3\. \*\*Programação Funcional:\*\* Implementado em \*\*Lisp (Common Lisp)\*\*, utilizando funções puras, imutabilidade de dados e recursão estrutural para a filtragem de listas de sintomas.
-
-
-
-\---
-
-
-
-\## Base de Conhecimento (Regras de Negócio)
+\# Base de Conhecimento (Regras de Negócio)
 
 
 
@@ -64,7 +43,7 @@ O sistema foi modelado com base em 10 cenários reais de falhas mecânicas e ele
 
 
 
-\## 📂 Estrutura do Repositório
+\# Estrutura do Repositório
 
 
 
