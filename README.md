@@ -1,11 +1,11 @@
-\# Sistema Especialista para Diagnóstico de Falhas Automotivas
+# Sistema Especialista para Diagnóstico de Falhas Automotivas
 
 
 
 Este repositório contém o projeto prático desenvolvido para a disciplina de Laboratório de Programação. O objetivo do trabalho é resolver o mesmo problema computacional — um sistema especialista de diagnóstico mecânico — utilizando três linguagens de programação sob três paradigmas distintos, analisando os pontos fortes, limitações e a elegância de cada abordagem.
 
 
-\# Base de Conhecimento (Regras de Negócio)
+# Base de Conhecimento (Regras de Negócio)
 
 
 
@@ -39,11 +39,11 @@ O sistema foi modelado com base em 10 cenários reais de falhas mecânicas e ele
 
 
 
-\---
+---
 
 
 
-\# Estrutura do Repositório
+# Estrutura do Repositório
 
 
 
