@@ -4,7 +4,7 @@
 % Equipe: Diele Ilana Coelho Cantanhede, Maria Eduarda Pereira Lima, Matheus Macário Sousa e Rian Emmanoel Santos Bastos
 % =====================================================================
 
-% 1. REGRAS DE INFERÊNCIA (O Motor Lógico)
+% REGRAS DE INFERÊNCIA (O Motor Lógico)
 % Conforme a especificação, as regras seguem a estrutura clássica:
 % SE sintoma_A presente E sintoma_B presente, ENTÃO diagnóstico é X.
 %
@@ -53,7 +53,7 @@ diagnostico(Sintomas, problema_na_transmissao, 'Transmissao') :-
     member(perda_de_potencia, Sintomas).
 
 
-% 2. INTERFACE DE CONSULTA (Agrupamento de Resultados)
+% INTERFACE DE CONSULTA (Agrupamento de Resultados)
 % O predicado findall/3 coleta todas as regras que unificaram (bateram) 
 % com os sintomas informados e devolve uma lista de respostas.
 
